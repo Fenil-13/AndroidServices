@@ -33,7 +33,14 @@ class MusicPlayerService : Service() {
             val intent=Intent(Veriables.MUSIC_ACTIVITY_BROADCAST_ACTION)
             intent.putExtra(Veriables.MESSAGE_KEY,"done")
             LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
+            stopSelf()
         }
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d(TAG, "onStartCommand: calling")
+
+        return START_NOT_STICKY
     }
 
     override fun onBind(intent: Intent?): IBinder {
@@ -43,12 +50,17 @@ class MusicPlayerService : Service() {
 
     override fun onUnbind(intent: Intent?): Boolean {
         Log.d(TAG, "onUnbind: calling")
-        return super.onUnbind(intent)
+        return true
     }
 
     override fun onDestroy() {
         Log.d(TAG, "onDestroy: calling")
         mPlayer.release()
+    }
+
+    override fun onRebind(intent: Intent?) {
+        super.onRebind(intent)
+        Log.d(TAG, "onRebind: calling")
     }
 
     inner class MyServiceBinder : Binder() {
@@ -58,6 +70,7 @@ class MusicPlayerService : Service() {
         }
 
     }
+
 
     //Client method
 

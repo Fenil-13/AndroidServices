@@ -29,6 +29,12 @@ class MusicPlayerActivity : AppCompatActivity() {
             musicPlayerService = myServiceBinder.getService()
 
             mBound = true
+
+            if (musicPlayerService.isPlaying()) {
+                binding.btnToggleMusic.text = "PAUSE"
+            } else {
+                binding.btnToggleMusic.text = "PLAY"
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -63,6 +69,8 @@ class MusicPlayerActivity : AppCompatActivity() {
                         musicPlayerService.pause()
                         btnToggleMusic.text = "PLAY"
                     } else {
+                        val intent=Intent(this@MusicPlayerActivity,MusicPlayerService::class.java)
+                        startService(intent)
                         musicPlayerService.play()
                         btnToggleMusic.text = "PAUSE"
                     }
