@@ -1,14 +1,11 @@
-package com.digitalgenius.androidservices
+package com.digitalgenius.androidservices.services
 
 import android.app.Service
-import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
 import android.os.IBinder
-import android.os.ResultReceiver
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.digitalgenius.androidservices.Veriables
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +17,7 @@ class MyStartedService : Service() {
 //    onStartCommand()
 //    Service Running
 //    onDestroy()
+//    Service Shut down
 
     private val TAG="MyStartedService"
 

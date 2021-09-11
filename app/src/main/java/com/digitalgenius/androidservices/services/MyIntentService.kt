@@ -1,12 +1,10 @@
-package com.digitalgenius.androidservices
+package com.digitalgenius.androidservices.services
 
 import android.app.IntentService
 import android.content.Intent
 import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.digitalgenius.androidservices.Veriables
 
 class MyIntentService : IntentService("MyIntentService") {
 

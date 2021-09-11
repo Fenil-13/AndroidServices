@@ -10,11 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidServices">
+        <activity
+            android:name=".MusicPlayerActivity"
+            android:exported="true" />
+
         <service
-            android:name=".MyIntentService"
-            android:exported="false"></service>
+            android:name=".services.MyIntentService"
+            android:exported="false" />
         <service
-            android:name=".MyStartedService"
+            android:name=".services.MusicPlayerService"
+            android:exported="false" />
+        <service
+            android:name=".services.MyStartedService"
             android:enabled="true"
             android:exported="false" />
 

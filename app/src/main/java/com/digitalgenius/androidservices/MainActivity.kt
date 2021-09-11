@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.digitalgenius.androidservices.databinding.ActivityMainBinding
+import com.digitalgenius.androidservices.services.MyIntentService
+import com.digitalgenius.androidservices.services.MyStartedService
 
 class MainActivity : AppCompatActivity() {
     private val TAG="MainActivity"
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         var intent: Intent?=null
         binding.btnStartStartedService.setOnClickListener {
 
-            intent = Intent(this@MainActivity,MyStartedService::class.java)
+            intent = Intent(this@MainActivity, MyStartedService::class.java)
             intent!!.putExtra(Veriables.MESSAGE_KEY,"Dil mange More")
             startService(intent)
         }
@@ -43,9 +45,14 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnStartIntentService.setOnClickListener {
-            intent = Intent(this@MainActivity,MyIntentService::class.java)
+            intent = Intent(this@MainActivity, MyIntentService::class.java)
             intent!!.putExtra(Veriables.MESSAGE_KEY,"Dil mange More")
             startService(intent)
+        }
+
+        binding.btnStartMusicPlayerService.setOnClickListener {
+            intent = Intent(this@MainActivity, MusicPlayerActivity::class.java)
+            startActivity(intent)
         }
     }
 
