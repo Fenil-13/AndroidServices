@@ -47,8 +47,10 @@ class MusicPlayerActivity : AppCompatActivity() {
     private val uiBroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val message = intent!!.getStringExtra(Veriables.MESSAGE_KEY)
-            if (message == "done") {
-                binding.btnToggleMusic.text = "PLAY"
+            when(message){
+                "done"->binding.btnToggleMusic.text = "PLAY"
+                "play"->binding.btnToggleMusic.text = "PLAY"
+                "pause"->binding.btnToggleMusic.text = "PAUSE"
             }
 
         }
@@ -67,12 +69,11 @@ class MusicPlayerActivity : AppCompatActivity() {
                 if (mBound) {
                     if (musicPlayerService.isPlaying()) {
                         musicPlayerService.pause()
-                        btnToggleMusic.text = "PLAY"
                     } else {
                         val intent=Intent(this@MusicPlayerActivity,MusicPlayerService::class.java)
+                        intent.setAction(Veriables.MUSIC_SERVICE_ACTION_START)
                         startService(intent)
                         musicPlayerService.play()
-                        btnToggleMusic.text = "PAUSE"
                     }
                 }
 
