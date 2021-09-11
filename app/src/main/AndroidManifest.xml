@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidServices">
         <service
+            android:name=".MyIntentService"
+            android:exported="false"></service>
+        <service
             android:name=".MyStartedService"
             android:enabled="true"
             android:exported="false" />

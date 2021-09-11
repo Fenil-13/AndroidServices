@@ -35,7 +35,7 @@ class MyStartedService : Service() {
             downloadSomething(songName)
         }
         val intent=Intent(Veriables.MAIN_ACTIVITY_BROADCAST_ACTION)
-        intent.putExtra(Veriables.MESSAGE_KEY,"From Intent I am coming")
+        intent.putExtra(Veriables.MESSAGE_KEY,"From Started Intent I am coming")
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(intent)
         stopSelfResult(startId)
 

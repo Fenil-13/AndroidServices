@@ -40,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         binding.btnStopStartedService.setOnClickListener {
             stopService(intent)
         }
+
+
+        binding.btnStartIntentService.setOnClickListener {
+            intent = Intent(this@MainActivity,MyIntentService::class.java)
+            intent!!.putExtra(Veriables.MESSAGE_KEY,"Dil mange More")
+            startService(intent)
+        }
     }
 
     override fun onDestroy() {
